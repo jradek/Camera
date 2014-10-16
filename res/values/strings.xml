@@ -1,0 +1,26 @@
+<resources>
+
+    <string name="app_name">Camera</string>
+
+    <string name="walk_plus">W+</string>
+    <string name="walk_minus">W-</string>
+
+    <string name="strafe_plus">S+</string>
+    <string name="strafe_minus">S-</string>
+
+    <string name="lift_plus">L+</string>
+    <string name="lift_minus">L-</string>
+
+    <string name="roll_plus">R+</string>
+    <string name="roll_minus">R-</string>
+
+    <string name="pitch_plus">P+</string>
+    <string name="pitch_minus">P-</string>
+
+    <string name="yaw_plus">Y+</string>
+    <string name="yaw_minus">Y-</string>
+
+    <string name="reset">Reset</string>
+    <string name="mode_xyz">XYZ</string>
+    <string name="mode_roll_pitch_yaw">RPY</string>
+</resources>

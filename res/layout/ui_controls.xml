@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:columnCount="4"
+    android:rowCount="2"
+    android:orientation="horizontal">
+
+    <!-- first row -->
+
+    <Button
+        android:id="@+id/button_0"
+        android:layout_width="@dimen/ui_button_width"
+        android:layout_height="@dimen/ui_button_height"
+        android:layout_gravity="left|top"
+        android:layout_column="0"
+        android:layout_row="0"
+        android:text="@string/lift_minus" />
+
+    <Button
+        android:id="@+id/button_1"
+        android:layout_width="@dimen/ui_button_width"
+        android:layout_height="@dimen/ui_button_height"
+        android:layout_gravity="center|top"
+        android:layout_column="1"
+        android:layout_row="0"
+        android:text="@string/walk_plus" />
+
+    <Button
+        android:id="@+id/button_2"
+        android:layout_width="@dimen/ui_button_width"
+        android:layout_height="@dimen/ui_button_height"
+        android:layout_gravity="right|top"
+        android:layout_column="2"
+        android:layout_row="0"
+        android:text="@string/lift_plus" />
+
+    <Button
+        android:id="@+id/button_mode"
+        android:layout_width="@dimen/ui_button_width"
+        android:layout_height="@dimen/ui_button_height"
+        android:layout_gravity="right|top"
+        android:layout_column="3"
+        android:layout_row="0"
+        android:text="@string/mode_roll_pitch_yaw" />
+
+    <!-- second row -->
+
+    <Button
+        android:id="@+id/button_3"
+        android:layout_width="@dimen/ui_button_width"
+        android:layout_height="@dimen/ui_button_height"
+        android:layout_gravity="left|top"
+        android:layout_column="0"
+        android:layout_row="1"
+        android:text="@string/strafe_minus" />
+
+    <Button
+        android:id="@+id/button_4"
+        android:layout_width="@dimen/ui_button_width"
+        android:layout_height="@dimen/ui_button_height"
+        android:layout_gravity="center|top"
+        android:layout_column="1"
+        android:layout_row="1"
+        android:text="@string/walk_minus" />
+
+    <Button
+        android:id="@+id/button_5"
+        android:layout_width="@dimen/ui_button_width"
+        android:layout_height="@dimen/ui_button_height"
+        android:layout_gravity="right|top"
+        android:layout_column="2"
+        android:layout_row="1"
+        android:text="@string/strafe_plus" />
+
+    <Button
+        android:id="@+id/button_reset"
+        android:layout_width="@dimen/ui_button_width"
+        android:layout_height="@dimen/ui_button_height"
+        android:layout_gravity="right|top"
+        android:layout_column="3"
+        android:layout_row="1"
+        android:textSize="14sp"
+        android:text="@string/reset" />
+</GridLayout>
