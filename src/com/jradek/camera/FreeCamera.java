@@ -45,7 +45,7 @@ public class FreeCamera extends Camera {
      * @param delta    The displacement by which to move
      */
     public void walk(float delta) {
-        mTranslation = mTranslation.addScaled(mLook, delta);
+        mTranslation.addScaled(mLook, delta);
     }
 
     /**
@@ -53,7 +53,7 @@ public class FreeCamera extends Camera {
      * @param delta    The displacement by which to move
      */
     public void strafe(float delta) {
-        mTranslation = mTranslation.addScaled(mRight, delta);
+        mTranslation.addScaled(mRight, delta);
     }
 
     /**
@@ -61,7 +61,7 @@ public class FreeCamera extends Camera {
      * @param delta    The displacement by which to move
      */
     public void lift(float delta) {
-        mTranslation = mTranslation.addScaled(mUp, delta);
+        mTranslation.addScaled(mUp, delta);
     }
 
     /**

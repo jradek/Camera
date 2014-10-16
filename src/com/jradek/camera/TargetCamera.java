@@ -89,7 +89,7 @@ public class TargetCamera extends Camera {
      * @param amount The displacement by which to move to target
      */
     public void zoom(float amount) {
-        mPosition = mPosition.addScaled(mLook, amount);
+        mPosition.addScaled(mLook, amount);
         mDistance = vec3.distance(mPosition, mTarget);
 
         // limit

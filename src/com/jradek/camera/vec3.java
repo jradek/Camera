@@ -28,10 +28,10 @@ public class vec3 {
     }
 
     public vec3 addScaled(final vec3 other, float scale) {
-        return new vec3(
-                x + other.x * scale,
-                y + other.y * scale,
-                z + other.z * scale);
+        this.x += other.x * scale;
+        this.y += other.y * scale;
+        this.z += other.z * scale;
+        return this;
     }
 
     @Override
