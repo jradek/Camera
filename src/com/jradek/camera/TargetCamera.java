@@ -2,6 +2,9 @@ package com.jradek.camera;
 
 import android.opengl.Matrix;
 
+/**
+ * Special camera which focuses on a specific target.
+ */
 public class TargetCamera extends Camera {
     private vec3 mTarget;
 
@@ -23,6 +26,11 @@ public class TargetCamera extends Camera {
     private final float[] mHelpMatrix = new float[16];
     private final float[] mHelpVectors = new float[16];
 
+    /**
+     * Constructs the camera
+     * @param position the camera position
+     * @param target the target to look at
+     */
     public TargetCamera(final vec3 position, final vec3 target) {
         mLook = new vec3(0,0,-1);
         mUp = new vec3(0,1,0);
@@ -33,7 +41,6 @@ public class TargetCamera extends Camera {
     public void reset(final vec3 position, final vec3 target) {
         mPosition = position.clone();
         setTarget(target);
-
         update();
     }
 
@@ -49,6 +56,12 @@ public class TargetCamera extends Camera {
         mAzimuthDegree += 270;
     }
 
+    /**
+     * Pans (moves) the camera and target in the Right/Up plane
+     *
+     * @param deltaRight The displacement by which to pan right
+     * @param deltaUp The displacement by which to pan up
+     */
     public void pan(float deltaRight, float deltaUp) {
         final vec3 x = mRight.clone().scale(deltaRight);
         final vec3 y = mUp.clone().scale(deltaUp);
@@ -57,6 +70,12 @@ public class TargetCamera extends Camera {
         mTarget.add(x).add(y);
     }
 
+    /**
+     * Moves the camera and target in the Right/Look plane
+     *
+     * @param deltaRight The displacement by which to move right
+     * @param deltaLook The displacement by which to move to look
+     */
     public void move(float deltaRight, float deltaLook) {
         final vec3 x = mRight.clone().scale(deltaRight);
         final vec3 y = mLook.clone().scale(deltaLook);
@@ -65,6 +84,10 @@ public class TargetCamera extends Camera {
         mTarget.add(x).add(y);
     }
 
+    /**
+     * Zooms to target
+     * @param amount The displacement by which to move to target
+     */
     public void zoom(float amount) {
         mPosition = mPosition.addScaled(mLook, amount);
         mDistance = vec3.distance(mPosition, mTarget);
@@ -75,6 +98,11 @@ public class TargetCamera extends Camera {
         mDistance = Math.max(minDistance, Math.min(mDistance, maxDistance));
     }
 
+    /**
+     * Rotate camera
+     * @param deltaAzimuthDegree delta angle for azimuth in degree
+     * @param deltaInclinationDegree delta angle for inclination in degree
+     */
     public void rotate(float deltaAzimuthDegree, float deltaInclinationDegree) {
         mAzimuthDegree += deltaAzimuthDegree;
         mInclinationDegree += deltaInclinationDegree;
@@ -82,8 +110,6 @@ public class TargetCamera extends Camera {
 
     @Override
     public void update() {
-        Matrix.setIdentityM(mHelpMatrix, 0);
-
         // rotate position, up-vector according to azimuth and inclination
 
         // position helper
@@ -98,7 +124,8 @@ public class TargetCamera extends Camera {
         mHelpVectors[4 + 2] = -1.0f;
         mHelpVectors[4 + 3] = 0;
 
-        // step 1: azimuth rotation around y-Axis (DOES NOT effect up!)
+        // step 1: azimuth rotation around y-Axis. DOES NOT affect mUp, because
+        // mUp points to the same direction
         Matrix.setRotateM(mHelpMatrix, 0, mAzimuthDegree, 0, 1, 0);
 
         // rotate position
@@ -127,9 +154,8 @@ public class TargetCamera extends Camera {
         // move to target
         mPosition.add(mTarget);
 
-        // determine mLook
+        // determine mLook and setup mRight
         mLook = mTarget.clone().substract(mPosition).normalize();
-
         mRight = mLook.cross(mUp).normalize();
 
         Matrix.setLookAtM(mViewMatrix, 0,

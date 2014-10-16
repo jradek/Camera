@@ -57,10 +57,10 @@ public abstract class Camera {
     }
 
     protected void rotateVector(vec3 srcDest, float[] matrix) {
-        mHelp2Vectors[0] = (float)srcDest.x;
-        mHelp2Vectors[1] = (float)srcDest.y;
-        mHelp2Vectors[2] = (float)srcDest.z;
-        mHelp2Vectors[3] = 0;
+        mHelp2Vectors[0 + 0] = (float)srcDest.x;
+        mHelp2Vectors[0 + 1] = (float)srcDest.y;
+        mHelp2Vectors[0 + 2] = (float)srcDest.z;
+        mHelp2Vectors[0 + 3] = 0;
 
         Matrix.multiplyMV(mHelp2Vectors, 4, matrix, 0, mHelp2Vectors, 0);
 
